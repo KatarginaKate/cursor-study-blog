@@ -21,16 +21,14 @@ export function useBlogGenerator() {
       () => axios.post(API_ENDPOINTS.BLOG_GENERATE, { prompt }),
       {
         successMessage: 'Content generated successfully!',
-        errorMessage: MESSAGES.ERROR_GENERIC,
-        onSuccess: (data) => {
-          const parsedContent = parse(data.content)
-          setGeneratedContent(parsedContent)
-        }
+        errorMessage: MESSAGES.ERROR_GENERIC
       }
     )
 
     if (result.success) {
-      return { success: true, content: generatedContent }
+      const parsedContent = parse(result.data.content || '')
+      setGeneratedContent(parsedContent)
+      return { success: true, content: parsedContent }
     }
 
     return result

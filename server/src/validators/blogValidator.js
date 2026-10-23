@@ -1,18 +1,32 @@
 export const validateBlogInput = (req, res, next) => {
-  const { title, description, category } = req.body.blog ? JSON.parse(req.body.blog) : {}
+  let blog = {}
+  try {
+    blog = req.body.blog ? JSON.parse(req.body.blog) : {}
+  } catch {
+    return res.status(400).json({ success: false, message: 'Invalid blog payload' })
+  }
+
+  const { title, subTitle, description, category, isPublished } = blog
+  const published = isPublished === true || isPublished === 'true'
   const errors = []
 
   if (!title || title.trim().length < 3) {
     errors.push('Title must be at least 3 characters')
   }
-  if (!description || description.trim().length < 10) {
-    errors.push('Description must be at least 10 characters')
-  }
-  if (!category) {
-    errors.push('Category is required')
-  }
-  if (!req.file) {
-    errors.push('Image is required')
+
+  if (published) {
+    if (!subTitle || !subTitle.trim()) {
+      errors.push('Subtitle is required')
+    }
+    if (!description || description.trim().length < 10) {
+      errors.push('Description must be at least 10 characters')
+    }
+    if (!category) {
+      errors.push('Category is required')
+    }
+    if (!req.file) {
+      errors.push('Image is required')
+    }
   }
 
   if (errors.length > 0) {

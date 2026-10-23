@@ -12,6 +12,27 @@
   flex-shrink: 0;
 }
 
+.admin-add-blog-form-wrap {
+  position: relative;
+  max-width: 600px;
+}
+
+.admin-generate-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  background: color-mix(in srgb, var(--ant-color-bg-container) 65%, transparent);
+  cursor: wait;
+}
+
+.admin-generate-overlay .ant-spin {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 21;
+  transform: translate(-50%, -50%);
+}
+
 .admin-add-blog-form {
   max-width: 600px;
 }
@@ -26,8 +47,8 @@
 }
 
 .admin-upload .ant-upload.ant-upload-select {
-  width: 200px !important;
-  height: 200px !important;
+  width: 104px !important;
+  height: 104px !important;
   margin: 0;
   border-radius: var(--ant-border-radius-lg);
   border-style: dashed;
@@ -52,31 +73,12 @@
   margin-top: var(--ant-margin-xs);
 }
 
-/* Editor wrapper with AI button */
 .admin-editor-wrapper {
   position: relative;
 }
 
-.admin-editor {
-  min-height: 150px;
-  background: var(--ant-color-bg-container);
-  border-radius: var(--ant-border-radius);
-}
-
-.admin-editor .ql-editor {
-  min-height: 120px;
-}
-
-.admin-editor .ql-toolbar {
-  border-top-left-radius: var(--ant-border-radius);
-  border-top-right-radius: var(--ant-border-radius);
-  border-color: var(--ant-color-border);
-}
-
-.admin-editor .ql-container {
-  border-bottom-left-radius: var(--ant-border-radius);
-  border-bottom-right-radius: var(--ant-border-radius);
-  border-color: var(--ant-color-border);
+.admin-body-input {
+  padding-bottom: 40px;
 }
 
 .admin-editor-ai-button {

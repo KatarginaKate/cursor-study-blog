@@ -96,7 +96,7 @@
       "subtitleLabel": "Subtitle",
       "categoryLabel": "Category",
       "categoryPlaceholder": "Select Category",
-      "bodyLabel": "Article text",
+      "bodyLabel": "Body",
       "generateAI": "Generate with AI",
       "publishButton": "Publish Article",
       "saveDraft": "Save Draft"
@@ -170,7 +170,8 @@
     "commentRequired": "Please enter your comment",
     "titleRequired": "Please enter article title",
     "subtitleRequired": "Please enter subtitle",
-    "categoryRequired": "Please select a category"
+    "categoryRequired": "Please select a category",
+    "descriptionRequired": "Please add blog description"
   },
   "messages": {
     "success": {

@@ -16,7 +16,6 @@ import {
 import { useAppContext } from '@/context/AppContext'
 import { Toaster } from 'react-hot-toast'
 import { ROUTES } from '@/constants/routes'
-import 'quill/dist/quill.snow.css'
 
 const theme = {
   cssVar: true,

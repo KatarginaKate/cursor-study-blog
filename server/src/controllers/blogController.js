@@ -33,23 +33,25 @@ const deleteImageFile = (imagePath) => {
 export const addBlog = asyncHandler(async (req, res) => {
   const { title, subTitle, description, category, isPublished } = JSON.parse(req.body.blog)
   const imageFile = req.file
+  const published = isPublished === true || isPublished === 'true'
 
-  // Check if all fields are present
-  if (!title || !description || !category || !imageFile) {
+  if (published && (!title || !subTitle || !description || !category || !imageFile)) {
     return res.status(400).json({ success: false, message: 'Missing required fields' })
   }
 
-  // Get the image path from the uploaded file (stored as relative path)
-  const image = getImagePath(imageFile.filename)
+  if (!title) {
+    return res.status(400).json({ success: false, message: 'Missing required fields' })
+  }
 
-  // Create blog with author information from authenticated user
+  const image = imageFile ? getImagePath(imageFile.filename) : ''
+
   const blog = await Blog.create({
     title,
-    subTitle,
-    description,
-    category,
+    subTitle: subTitle || '',
+    description: description || '',
+    category: category || '',
     image,
-    isPublished,
+    isPublished: published,
     author: req.user.userId,
     authorName: req.user.name
   })

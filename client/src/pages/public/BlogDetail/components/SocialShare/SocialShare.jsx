@@ -13,7 +13,7 @@ function SocialShare() {
 
   return (
     <Space
-      direction="vertical"
+      orientation="vertical"
       size="middle"
       className="social-share"
       style={{

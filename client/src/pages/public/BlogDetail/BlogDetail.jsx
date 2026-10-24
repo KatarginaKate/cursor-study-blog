@@ -1,13 +1,16 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { Flex, theme } from 'antd'
+import { Flex, Spin, theme } from 'antd'
 import { Navbar, Footer, Loader } from '@/components'
-import { useBlog } from '@/hooks'
-import { BlogHeader, BlogContent } from './components'
+import { useBlog, useComments } from '@/hooks'
+import { LAYOUT } from '@/constants/ui'
+import { BlogHeader, BlogContent, CommentForm, CommentList } from './components'
+import './BlogDetail.css'
 
 function BlogDetail() {
   const { id } = useParams()
   const { blog, loading: blogLoading } = useBlog(id)
+  const { comments, loading: commentsLoading, submitting, addComment } = useComments(id)
   const { token } = theme.useToken()
 
   if (blogLoading || !blog) {
@@ -36,6 +39,22 @@ function BlogDetail() {
           <BlogHeader blog={blog} />
 
           <BlogContent content={blog.description} />
+
+          <Flex
+            vertical
+            gap="large"
+            className="blog-detail-comments"
+            style={{ maxWidth: LAYOUT.COMMENTS_MAX_WIDTH }}
+          >
+            <CommentForm onSubmit={addComment} submitting={submitting} />
+            {commentsLoading ? (
+              <Flex justify="center">
+                <Spin />
+              </Flex>
+            ) : (
+              <CommentList comments={comments} />
+            )}
+          </Flex>
         </Flex>
       </Flex>
 

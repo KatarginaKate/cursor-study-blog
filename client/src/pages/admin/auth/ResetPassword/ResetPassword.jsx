@@ -54,7 +54,7 @@ function ResetPassword() {
       </Header>
 
       <Content className="auth-content">
-        <Space direction="vertical" size={8} className="auth-card">
+        <Space orientation="vertical" size={8} className="auth-card">
           <Title level={1} className="auth-card-title">
             {t('auth.resetPassword.title')}
           </Title>

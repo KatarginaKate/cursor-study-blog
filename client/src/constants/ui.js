@@ -54,7 +54,7 @@ export const DATE_FORMATS = {
 // UI Constants - Sort Options
 export const SORT_OPTIONS = {
   BLOGS: ['Latest', 'A-Z'],
-  COMMENTS: ['Latest', 'By Article']
+  COMMENTS: ['latest', 'article']
 }
 
 // UI Constants - Default Values

@@ -1,0 +1,12 @@
+.comment-list-body {
+  width: 100%;
+}
+
+.comment-list-content {
+  margin-bottom: 0;
+  white-space: pre-wrap;
+}
+
+.comment-list .ant-list-item {
+  border-block-end: var(--ant-line-width) solid var(--ant-color-border-secondary);
+}

@@ -1,0 +1,20 @@
+.comment-form-heading {
+  margin: 0;
+  text-align: center;
+}
+
+.comment-form-title {
+  margin: 0;
+}
+
+.comment-form-fields .ant-form-item {
+  margin-bottom: var(--ant-margin);
+}
+
+.comment-form-submit {
+  margin-bottom: 0;
+}
+
+.comment-form .ant-input-textarea-show-count textarea {
+  padding-bottom: var(--ant-padding-xl);
+}

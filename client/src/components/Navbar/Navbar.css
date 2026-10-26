@@ -2,20 +2,68 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: #fff;
+  padding: 18px 48px;
 }
 
 .navbar-logo {
   display: flex;
   align-items: center;
+  gap: 8px;
   cursor: pointer;
+  color: #fa541c;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.navbar-logo img {
+  width: 32px;
+  height: 32px;
 }
 
 .navbar-nav {
   display: flex;
   align-items: center;
+  gap: 8px;
 }
 
+.navbar-link {
+  border: 0;
+  background: transparent;
+  color: #1f1f1f;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 8px 14px;
+  cursor: pointer;
+}
 
+.navbar-login.ant-btn {
+  height: 38px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border-color: #fa541c;
+  color: #fa541c;
+  font-weight: 600;
+}
 
+.navbar-login.ant-btn:hover {
+  color: #ff7a45 !important;
+  border-color: #ff7a45 !important;
+}
 
+.navbar-register.ant-btn {
+  height: 38px;
+  padding: 0 18px;
+  border-radius: 999px;
+  font-weight: 600;
+}
 
+@media (max-width: 720px) {
+  .navbar {
+    padding: 16px;
+  }
+
+  .navbar-link {
+    display: none;
+  }
+}

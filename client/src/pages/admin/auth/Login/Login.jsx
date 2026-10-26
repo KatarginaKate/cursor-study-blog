@@ -1,4 +1,5 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom'
 import { Form, Input, Button, Layout, Typography, Space, Flex } from 'antd'
 import { MailOutlined, EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons'
 import { useTranslation } from 'react-i18next'
@@ -14,6 +15,7 @@ const { Title, Text, Link } = Typography
 
 function Login() {
   const { setToken, navigate } = useAppContext()
+  const location = useLocation()
   const [loading, setLoading] = React.useState(false)
   const { t } = useTranslation()
 
@@ -30,6 +32,10 @@ function Login() {
         setToken(response.data.token)
         localStorage.setItem('token', response.data.token)
         toast.success(t('messages.success.login'))
+        const returnTo = location.state?.from
+        if (typeof returnTo === 'string' && returnTo.startsWith('/') && !returnTo.startsWith('//')) {
+          navigate(returnTo)
+        }
       } else {
         toast.error(response.data.message || t('messages.error.login'))
       }

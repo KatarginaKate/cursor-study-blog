@@ -1,24 +1,46 @@
-import React, { useState } from 'react'
-import { Form, Input, Button, Typography, Flex, theme } from 'antd'
+import { useState } from 'react'
+import { useLocation } from 'react-router-dom'
+import { Form, Input, Button } from 'antd'
 import { useTranslation } from 'react-i18next'
+import { useAppContext } from '@/context/AppContext'
+import { ROUTES } from '@/constants/routes'
 import './CommentForm.css'
 
-const { Title } = Typography
 const { TextArea } = Input
 
 const MAX_COMMENT_LENGTH = 650
 
+function readTokenName(token) {
+  if (!token) return ''
+
+  try {
+    const segment = token.split('.')[1]
+    const normalized = segment.replace(/-/g, '+').replace(/_/g, '/')
+    const json = decodeURIComponent(
+      atob(normalized)
+        .split('')
+        .map((char) => `%${`00${char.charCodeAt(0).toString(16)}`.slice(-2)}`)
+        .join('')
+    )
+    return JSON.parse(json).name || ''
+  } catch {
+    return ''
+  }
+}
+
 function CommentForm({ onSubmit, loading = false }) {
   const [form] = Form.useForm()
   const [submitting, setSubmitting] = useState(false)
-  const { token } = theme.useToken()
+  const { token, navigate } = useAppContext()
+  const location = useLocation()
   const { t } = useTranslation()
+  const authorName = readTokenName(token)
 
   const handleSubmit = async (values) => {
     setSubmitting(true)
 
     const result = await onSubmit({
-      name: values.name,
+      name: authorName,
       content: values.content
     })
 
@@ -29,78 +51,55 @@ function CommentForm({ onSubmit, loading = false }) {
     setSubmitting(false)
   }
 
+  if (!token) {
+    return (
+      <div className="comment-form">
+        <h3>{t('comment.title')}</h3>
+        <p>{t('comment.guestLead')}</p>
+        <p>{t('comment.guestBody')}</p>
+        <p>{t('comment.guestAccount')}</p>
+        <div className="comment-auth-actions">
+          <Button onClick={() => navigate(ROUTES.ADMIN, { state: { from: location.pathname } })}>
+            {t('comment.logIn')}
+          </Button>
+          <Button type="primary" onClick={() => navigate(ROUTES.REGISTER)}>
+            {t('comment.register')}
+          </Button>
+        </div>
+      </div>
+    )
+  }
+
   return (
-    <Flex
-      vertical
-      gap={token.marginXS}
-      style={{ width: '100%' }}
-    >
-      <Title
-        level={3}
-      style={{
-          margin: 0,
-          marginBottom: token.marginXS,
-          fontWeight: token.fontWeightStrong,
-          color: token.colorTextBase
-        }}
-      >
-          {t('comment.title')}
-        </Title>
-
-      <Form
-        form={form}
-        layout="vertical"
-        onFinish={handleSubmit}
-        style={{ width: '100%' }}
-      >
-        <Form.Item
-          name="name"
-          rules={[{ required: true, message: t('validation.nameRequired') }]}
-          style={{ marginBottom: token.marginSM }}
-        >
-          <Input
-            placeholder={t('comment.namePlaceholder')}
-            size="large"
-            style={{
-              borderRadius: token.borderRadiusLG
-            }}
-          />
-        </Form.Item>
-
+    <div className="comment-form">
+      <h3>{t('comment.title')}</h3>
+      <Form form={form} layout="vertical" onFinish={handleSubmit}>
         <Form.Item
           name="content"
-          rules={[{ required: true, message: t('validation.commentRequired') }]}
-          style={{ marginBottom: token.marginSM }}
+          rules={[
+            { required: true, message: t('validation.commentRequired') },
+            { min: 5, message: t('validation.commentMin') }
+          ]}
         >
           <TextArea
             placeholder={t('comment.contentPlaceholder')}
-            rows={5}
-            size="large"
+            rows={4}
             maxLength={MAX_COMMENT_LENGTH}
             showCount={{
               formatter: ({ count, maxLength }) => `${count}/${maxLength}`
             }}
-            style={{
-              borderRadius: token.borderRadiusLG
-            }}
           />
         </Form.Item>
-
-        <Form.Item style={{ marginBottom: 0 }}>
-          <Button
-            type="primary"
-            htmlType="submit"
-            loading={loading || submitting}
-            size="large"
-            style={{
-              borderRadius: token.borderRadiusLG
-            }}
-          >
-            {t('common.submit')}
-          </Button>
-        </Form.Item>
+        <Button
+          type="primary"
+          htmlType="submit"
+          loading={loading || submitting}
+          disabled={!authorName}
+        >
+          {t('common.submit')}
+        </Button>
       </Form>
-    </Flex>
+    </div>
   )
 }
 

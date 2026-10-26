@@ -71,8 +71,7 @@ function BlogDetail() {
 
           <Flex
             vertical
-            align="center"
-            gap={token.marginLG}
+            gap={28}
             style={{ width: '100%', maxWidth: LAYOUT.COMMENTS_MAX_WIDTH }}
           >
       <CommentForm onSubmit={handleAddComment} />

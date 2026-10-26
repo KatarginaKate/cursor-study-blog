@@ -37,16 +37,19 @@
     "titleHighlight": "blogging",
     "titleEnd": "platform.",
     "description": "This is your space to think out loud, to share what matters, and to write without filters. Whether it's one word or a thousand, your story starts right here.",
-    "searchPlaceholder": "Search for blogs..."
+    "searchPlaceholder": "Search for blogs...",
+    "startWriting": "Start writing"
   },
   "newsletter": {
-    "title": "Never Miss a Blog!",
+    "title": "Never Miss new articles!",
     "description": "Subscribe to get the latest blog, new tech, and exclusive news.",
     "placeholder": "Enter your email id",
     "successMessage": "Successfully subscribed to newsletter!"
   },
   "blog": {
     "noBlogs": "No blogs found",
+    "recentArticles": "Recent Articles",
+    "showMore": "Show More",
     "readMore": "Read More",
     "publishedOn": "Published on",
     "by": "By",
@@ -63,6 +66,11 @@
   "comment": {
     "title": "Leave a comment",
     "description": "Want to share your thoughts or leave a comment? We'd love to hear from you!",
+    "guestLead": "Want to share your thoughts or leave a comment?",
+    "guestBody": "Create an account to join the discussion, ask questions, and connect with other learners.",
+    "guestAccount": "Already have an account? Sign in and start commenting!",
+    "logIn": "Log In",
+    "register": "Register",
     "namePlaceholder": "Your name",
     "contentPlaceholder": "Your comment",
     "submitButton": "Submit Comment",
@@ -168,6 +176,7 @@
     "passwordMismatch": "Passwords do not match",
     "nameRequired": "Please enter your name",
     "commentRequired": "Please enter your comment",
+    "commentMin": "Comment must be at least 5 characters",
     "titleRequired": "Please enter article title",
     "subtitleRequired": "Please enter subtitle",
     "categoryRequired": "Please select a category"

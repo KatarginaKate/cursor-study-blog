@@ -1,2 +1,8 @@
-export const BLOG_CATEGORIES = ['All', 'Technology', 'Startup', 'Lifestyle', 'Finance']
+export const BLOG_CATEGORIES = [
+  'All',
+  'Learning Strategies',
+  'Productivity & Focus',
+  'Tools & Technologies',
+  'Personal Growth',
+]
 

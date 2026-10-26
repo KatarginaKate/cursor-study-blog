@@ -59,7 +59,7 @@ export const SORT_OPTIONS = {
 
 // UI Constants - Default Values
 export const DEFAULTS = {
-  CATEGORY: 'Startup',
+  CATEGORY: 'Learning Strategies',
   AUTHOR: 'Michael Brown'
 }
 

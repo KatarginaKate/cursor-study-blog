@@ -1,8 +1,52 @@
-.comment-form-container {
-  margin: 0 auto;
+.comment-form {
+  width: 100%;
 }
 
+.comment-form h3 {
+  margin: 0 0 12px;
+  color: #1f1f1f;
+  font-size: 20px;
+  font-weight: 700;
+}
 
+.comment-form p {
+  margin: 0 0 4px;
+  color: #8c8c8c;
+  font-size: 14px;
+  line-height: 1.6;
+}
 
+.comment-auth-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
 
+.comment-auth-actions .ant-btn {
+  height: 36px;
+  padding: 0 18px;
+  border-radius: 8px;
+  font-weight: 600;
+}
 
+.comment-form .ant-input-textarea-show-count {
+  position: relative;
+}
+
+.comment-form .ant-input-textarea-show-count textarea {
+  padding-bottom: 24px;
+  border-radius: 8px;
+}
+
+.comment-form .ant-input-data-count,
+.comment-form .ant-input-textarea-show-count::after {
+  color: #bfbfbf;
+  font-size: 12px;
+}
+
+.comment-form .ant-btn-primary {
+  height: 36px;
+  padding: 0 18px;
+  border-radius: 8px;
+  font-weight: 600;
+}

@@ -1,12 +1,45 @@
 .newsletter-form-section {
+  background: #fff4ee;
   text-align: center;
+  padding: 56px 24px;
+  margin-top: 28px;
 }
 
-.newsletter-form-container {
+.newsletter-form-section h2 {
+  margin: 0 0 8px;
+  color: #1f1f1f;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.newsletter-form-section p {
+  margin: 0 0 22px;
+  color: #8c8c8c;
+  font-size: 15px;
+}
+
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  max-width: 520px;
   margin: 0 auto;
 }
 
+.newsletter-form .ant-input {
+  height: 44px;
+  border-radius: 10px;
+}
 
+.newsletter-submit.ant-btn {
+  height: 44px;
+  padding: 0 22px;
+  border-radius: 999px;
+  font-weight: 600;
+}
 
-
-
+@media (max-width: 520px) {
+  .newsletter-form {
+    flex-direction: column;
+  }
+}

@@ -5,7 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "server": "NODE_ENV=development nodemon server.js",
+    "server": "nodemon server.js",
     "start": "NODE_ENV=production node server.js",
     "db:start": "docker-compose up -d",
     "db:stop": "docker-compose down",
